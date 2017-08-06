@@ -4,8 +4,8 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var articleOne = 
-                {   
+var articles={
+            'article-one':  {   
                 title: 'Article One | AnKur Pathak',
                 heading:'Article One',
                 date:' Sep 6 2017',
@@ -16,8 +16,32 @@ var articleOne =
                  </p>
                  <p> This is the content for my first article which is completely would be a dummy article and I don't want to go in a deep explanation. This will increase the readability of the code and this is the one of the most appealing content of the web page.
                  </p>`
-                    };
-                    
+                    }, 
+            'article-two': {   
+                title: 'Article Two | AnKur Pathak',
+                heading:'Article Two',
+                date:' Sep 6 2017',
+                content: 
+                `<p> This is the content for my Second article which is completely would be a dummy article and I don't want to go in a deep explanation. This will increase the readability of the code and this is the one of the most appealing content of the web page.
+                 </p>
+                 <p> This is the content for my second article which is completely would be a dummy article and I don't want to go in a deep explanation. This will increase the readability of the code and this is the one of the most appealing content of the web page.
+                 </p>
+                 <p> This is the content for my second article which is completely would be a dummy article and I don't want to go in a deep explanation. This will increase the readability of the code and this is the one of the most appealing content of the web page.
+                 </p>`
+                    },
+            'article-three': {   
+                title: 'Article Three | AnKur Pathak',
+                heading:'Article Three',
+                date:' Sep 6 2017',
+                content: 
+                `<p> This is the content for my Three article which is completely would be a dummy article and I don't want to go in a deep explanation. This will increase the readability of the code and this is the one of the most appealing content of the web page.
+                 </p>
+                 <p> This is the content for my Three article which is completely would be a dummy article and I don't want to go in a deep explanation. This will increase the readability of the code and this is the one of the most appealing content of the web page.
+                 </p>
+                 <p> This is the content for my Three article which is completely would be a dummy article and I don't want to go in a deep explanation. This will increase the readability of the code and this is the one of the most appealing content of the web page.
+                 </p>`
+                    }
+};
 function createTemplate(data){
 var title= data.title;
 var date=data.date;
@@ -60,16 +84,14 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function (req, res) {
-  res.send(createTemplate(articleOne));
+app.get('/:articleNames', function (req, res) {
+    // articleName== article-one
+    //articles[articleName]=={}content object for article-one
+    var articleName=req.params.articleNames;
+  res.send(createTemplate(articles[articleName]));
 });
 
-app.get('/article-two', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-app.get('/article-three', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
+
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
