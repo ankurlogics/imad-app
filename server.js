@@ -4,6 +4,19 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
+var articleOne = 
+                {   
+                title: 'Article One | AnKur Pathak',
+                heading:'Article One',
+                date:' Sep 6 2017',
+                content: 
+                `<p> This is the content for my first article which is completely would be a dummy article and I don't want to go in a deep explanation. This will increase the readability of the code and this is the one of the most appealing content of the web page.
+                 </p>
+                 <p> This is the content for my first article which is completely would be a dummy article and I don't want to go in a deep explanation. This will increase the readability of the code and this is the one of the most appealing content of the web page.
+                 </p>
+                 <p> This is the content for my first article which is completely would be a dummy article and I don't want to go in a deep explanation. This will increase the readability of the code and this is the one of the most appealing content of the web page.
+                 </p>`
+                    };
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
