@@ -23,8 +23,15 @@ button.onclick = function()
 		   request.open('GET','http://ankurlogics.imad.hasura-app.io/counter',true);
 		   request.send(null);
 	};
-
-
+//submit name
+var nameInput = document.getElementById('name') ;
+var name = nameInput.value;
+var submit = document.getElementById('submit_btn');
+submit.onclick = function()
+{
+  //make a request to the server and send the name
+  //capture a list of name and render it as list
+};
 
 
 
