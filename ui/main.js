@@ -35,7 +35,7 @@ submit.onclick = function()
   var list = '';
   for (var i = 0; i<name.length;i++)
   {
-      list += '<li>'++'</li>';
+      list += '<li>'+names[i]+'</li>';
   }
 };
 
