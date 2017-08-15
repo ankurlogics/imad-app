@@ -7,7 +7,7 @@ var config ={
     database: 'ankurlogics',
     host: 'db.imad.hasura-app.io',
     port: '5432',
-    password: 'db-ankurlogics-69603';
+    password: 'db-ankurlogics-69603'
 };
 
 var app = express();
