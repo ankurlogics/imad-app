@@ -73,7 +73,7 @@ app.get('/hash/:input', function(req,res)
 
 app.get('/create-user', function(req,res)
 {
-    
+    //username & password
 });
 
 
