@@ -98,7 +98,7 @@ app.post('/login',function(req,res){
     var username= req.body.username;
     var password = req.body.password;
    
-    pool.query('INSERT INTO "user" (username,password) VALUES($1,$2)', [username,dbString], function(err, result){
+    pool.query('SELECT * FROM "user" username=$1', [username,dbString], function(err, result){
        
        if(err)
    {
