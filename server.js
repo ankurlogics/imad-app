@@ -113,6 +113,7 @@ app.post('/login',function(req,res){
        //Match the password
        var dbString = result.rows[0].password;
    var salt = dbString.split('$')[2];
+   var hashedPassword = hash(password,salt);//creating a hash based on the password submitted and valid password
        res.send('User successfully Created'+username);
    } }
     });
