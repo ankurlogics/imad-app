@@ -1,4 +1,6 @@
-//counter code
+    
+
+/*//counter code
 var button = document.getElementById('counter');
 button.onclick = function()
 	{
@@ -22,8 +24,10 @@ button.onclick = function()
 		   //make the request
 		   request.open('GET','http://ankurlogics.imad.hasura-app.io/counter',true);
 		   request.send(null);
-	};
+	};*/
 
+
+//submit username /password to login
 var submit = document.getElementById('submit_btn');
 submit.onclick = function()
 {
@@ -37,6 +41,9 @@ submit.onclick = function()
 			   //Take some action
 			   if(request.status===200)
 			      {
+			          console.log('user logged in ');
+			          alert('Logged in successfully');
+			/*
 			 //capture a list of name and render it as list
   var names = request.responseText;
   names= JSON.parse(names);
@@ -47,16 +54,28 @@ submit.onclick = function()
   }
   var ul= document.getElementById('namelist');
   ul.innerHTML=list;
-			      }
+			  */       
+			  }
+			  else if (request.status===403){
+			      alert('USERNAME/PASSWORD is incorrect');
+			  }
+			  else if (request.status===500){
+			      alert('SOMETHING WENT WRONG ON THE SERVER');
+			  }
 			}
 			//Not done yet
 		   };
 		   //make the request
 		   //submit name
-var nameInput = document.getElementById('name') ;
-var name = nameInput.value;
-		   request.open('GET','http://ankurlogics.imad.hasura-app.io/submit-name?name='+name,true);
-		   request.send(null);
+var username = document.getElementById('username').value ;
+var password = document.getElementById('password').value ;
+console.log(username);
+console.log(password);
+/*var name = nameInput.value;*/
+		   request.open('POST','http://ankurlogics.imad.hasura-app.io/login',true);
+		   
+		   request.setRequestHeader('Content-Type','application/json');
+		   request.send(JSON.stringify({username:username,password:password}));
   
   
   
